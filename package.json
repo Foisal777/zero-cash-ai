@@ -1,10 +1,10 @@
 {
   "name": "zero-cash-ai",
   "version": "1.0.0",
-  "description": "Zero Cash Ai — Worldwide Crypto Intelligence AI Agent on Virtuals Protocol",
-  "main": "index.js",
+  "description": "Zero Cash Ai — Worldwide Crypto Intelligence AI Agent",
+  "main": "cron.js",
   "scripts": {
-    "start": "node api/agent-run.js"
+    "start": "node cron.js"
   },
   "dependencies": {
     "axios": "^1.6.0",
