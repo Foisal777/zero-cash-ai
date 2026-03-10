@@ -1,0 +1,20 @@
+{
+  "name": "zero-cash-ai",
+  "version": "1.0.0",
+  "description": "Zero Cash Ai — Worldwide Crypto Intelligence AI Agent on Virtuals Protocol",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node api/agent-run.js",
+    "start": "node api/agent-run.js"
+  },
+  "dependencies": {
+    "@virtuals-protocol/game": "^1.0.0",
+    "@virtuals-protocol/game-twitter-node": "^1.0.0",
+    "node-telegram-bot-api": "^0.64.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
