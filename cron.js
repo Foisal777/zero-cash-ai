@@ -1,21 +1,20 @@
 require("dotenv").config();
-const { runAgent } = require("./lib/agent");
+const { runHourlyUpdate, runAlertCheck } = require("./lib/agent");
 
-console.log("🤖 Zero Cash Ai Cron Started");
+console.log("🤖 Zero Cash Ai v2 Started!");
 
-// প্রতি ঘণ্টায় run করবে
+let tickCount = 0;
+
 async function tick() {
-  console.log(`[${new Date().toISOString()}] Running...`);
-  try {
-    await runAgent();
-    console.log("✅ Done!");
-  } catch (err) {
-    console.error("❌ Error:", err.message);
+  tickCount++;
+  const now = new Date().toISOString();
+  if (tickCount === 1 || tickCount % 4 === 0) {
+    console.log(`[${now}] 📊 Hourly update...`);
+    try { await runHourlyUpdate(); } catch (err) { console.error("Update error:", err.message); }
   }
+  console.log(`[${now}] ⚡ Alert check...`);
+  try { await runAlertCheck(); } catch (err) { console.error("Alert error:", err.message); }
 }
 
-// সাথে সাথে একবার run করো
 tick();
-
-// তারপর প্রতি ঘণ্টায়
-setInterval(tick, 60 * 60 * 1000);
+setInterval(tick, 15 * 60 * 1000);
